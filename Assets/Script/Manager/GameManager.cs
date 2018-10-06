@@ -33,7 +33,9 @@ public class GameManager : MonoBehaviour
 
 
     //=====================================================
-    public float RimitTime { get { return _rimitTime; } }
+    public float  RimitTime { get { return _rimitTime; } }
+    public int    ClearNum { get { return _clearNum; } }
+    public string CorrectWord { get { return _correctWord; } }
     //=====================================================
     void Start()
     {
