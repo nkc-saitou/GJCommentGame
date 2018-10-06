@@ -18,7 +18,7 @@ public class SceneFade : MonoBehaviour,IWordReceive {
     /// 文字オブジェクトの出力
     /// </summary>
     /// <param name="word">表示する文字列</param>
-    public void WordReceive(string word, Color color)
+    public void WordReceive(string word, WordType type)
     {
         switch(word)
         {

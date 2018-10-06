@@ -32,7 +32,7 @@ public class RandomInput : MonoBehaviour
         beforeGoodWards = beforeGoodWards.Select(value => -1).ToArray();
         beforeAngerWords = beforeAngerWords.Select(value => -1).ToArray();
 
-        wordOutput.WordReceive("うぽつ～～", Color.white);
+        wordOutput.WordReceive("うぽつ～～", WordType.Normal);
     }
     void Update()
     {
@@ -50,7 +50,7 @@ public class RandomInput : MonoBehaviour
     /// </summary>
     void RandomWordSend()
     {
-        wordOutput.WordReceive(RandomWord(), Color.white);
+        wordOutput.WordReceive(RandomWord(), WordType.Normal);
     }
     
     /// <summary>

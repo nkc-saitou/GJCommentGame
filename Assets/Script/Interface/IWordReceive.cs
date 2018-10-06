@@ -6,8 +6,6 @@ public interface IWordReceive
     /// 文字列の受け取り
     /// </summary>
     /// <param name="word">文字列</param>
-    /// <param name="color">文字列の色</param>
-    void WordReceive(string word, Color color);
-
-    //void WordReceive(string word, WordType type);
+    /// <param name="type">文字列の属性</param>
+    void WordReceive(string word, WordType type);
 }

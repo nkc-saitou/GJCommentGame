@@ -14,24 +14,17 @@ public class WordOutput : MonoBehaviour, IWordReceive
     /// 文字オブジェクトの出力
     /// </summary>
     /// <param name="word">表示する文字列</param>
-    public void WordReceive(string word, Color color)
+    public void WordReceive(string word, WordType type)
     {
         WordMover wordObj = Instantiate(wordPre, WordOutputPosition(), Quaternion.identity);
-        wordObj.Initialize(word, color);
+        wordObj.Initialize(word, WordImage.TypeToColor(type));
         wordManager.AddComment(wordObj);
-        
-        if(Color.red == color)
+
+        if(WordType.Troll == type)
         {
             wordCounter.CheckWord(word);
         }
     }
-
-    //public void WordReceive(string word, WordType type)
-    //{
-    //    WordMover wordObj = Instantiate(wordPre, WordOutputPosition(), Quaternion.identity);
-    //    wordObj.Initialize(word, WordImage.TypeToColor(type));
-    //    wordManager.AddComment(wordObj);
-    //}
 
     /// <summary>
     /// 文字を出す位置

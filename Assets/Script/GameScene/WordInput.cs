@@ -63,7 +63,7 @@ public class WordInput : MonoBehaviour
         if (iWordReceive == null || inputField.text == "") return;
 
         inputField.ActivateInputField();
-        iWordReceive.WordReceive(ConVerter(), Color.red);
+        iWordReceive.WordReceive(ConVerter(), WordType.Troll);
 
         InitInput();
     }
