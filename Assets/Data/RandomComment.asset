@@ -11,4 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b252cac3ff83ffc42b222b9853f90ca3, type: 3}
   m_Name: RandomComment
   m_EditorClassIdentifier: 
-  words: []
+  words:
+  - "\u304A\u3044\u3057\u305D\u3046\uFF5E"
+  - "\u3042\u304B\u3058\u3046\u3056\u3044"
+  - "\u3060\u3044\u3059\u304D\uFF01\uFF01"
+  - "\u304D\u306E\u3046\u305F\u3079\u305Fw"
+  - "\u307E\u3044\u306B\u3061\u305F\u3079\u3066\u308B"
+  - "\u305F\u3079\u305F\u3044\uFF5E\uFF5E"
+  - "\u3042\u3042\uFF5E\uFF5E"
