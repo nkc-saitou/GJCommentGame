@@ -413,8 +413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTimer: {fileID: 1387410160}
-  _rimitTime: 60
-  _clearNum: 2
+  _rimitTime: 180
+  _clearNum: 10
   _correctWord: "\u306B\u304C\u3044"
 --- !u!4 &1387410162
 Transform:
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shareWordData: {fileID: 11400000, guid: 6d27d908379fe2b4a837d4fe2aa9a7e6, type: 2}
-  AngerWordData: {fileID: 0}
+  AngerWordData: {fileID: 11400000, guid: 26b09386f8cfc8e4e886eeb80fb4ccf3, type: 2}
   specialWordData: {fileID: 11400000, guid: f1d36804f1b6c274f9b296052cf5654b, type: 2}
 --- !u!114 &1833376728
 MonoBehaviour:

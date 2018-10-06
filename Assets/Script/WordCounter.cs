@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class WordCounter : MonoBehaviour
 {
-    string  correctWord;    // 入力してほしいワード
-    int     clearNum;       // クリアまでの入力数
-    int     wordCount;      // 入力された数
+    string  _correctWord;    // 入力してほしいワード
+    int     _clearNum;       // クリアまでの入力数
 
     //-----------------------------------------------------
     //  プロパティ
     //-----------------------------------------------------
-    public float AchivementRate { get { return wordCount / clearNum; } }
+    public int WordCount { get; private set; }
+    public float AchivementRate { get { return Mathf.Min((float)WordCount / _clearNum, 1); } }
     //=====================================================
     void Start()
     {
@@ -23,9 +23,9 @@ public class WordCounter : MonoBehaviour
     /// </summary>
     public void Initialize()
     {
-        correctWord = GameManager.instance.CorrectWord;
-        clearNum = GameManager.instance.ClearNum;
-        wordCount = 0;
+        _correctWord = GameManager.instance.CorrectWord;
+        _clearNum    = GameManager.instance.ClearNum;
+        WordCount    = 0;
     }
     /// <summary>
     /// 文字の確認
@@ -33,9 +33,9 @@ public class WordCounter : MonoBehaviour
     /// <param name="word">確認ワード</param>
     public void CheckWord(string word)
     {
-        if (correctWord != word) return;
+        if (_correctWord != word) return;
 
-        wordCount++;
+        WordCount++;
         CheckClear();
     }
     /// <summary>
@@ -43,7 +43,7 @@ public class WordCounter : MonoBehaviour
     /// </summary>
     void CheckClear()
     {
-        if (clearNum > wordCount) return;
+        if (_clearNum > WordCount) return;
 
         GameManager.instance.GameClear();
     }
