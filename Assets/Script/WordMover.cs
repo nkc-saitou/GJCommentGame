@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-[RequireComponent(typeof(TextMesh))]
 public class WordMover : MonoBehaviour
 {
     const float MOVE_SPEED         = 3.0f;
     const float DISPLAY_END_BORDER = -11.0f;
     const float WORD_SIZE          = 1.0f;
 
-    Transform _transformCache;
-    TextMesh  _textMeshCache;
+    Transform   _transformCache;
+    [SerializeField]
+    TextMeshPro _textMeshCache;
 
     bool isMove     = false;
     int  wordLength = 0;
@@ -26,11 +27,10 @@ public class WordMover : MonoBehaviour
             return _transformCache;
         }
     }
-    TextMesh TextMeshCache
+    TextMeshPro TextMeshCache
     {
         get
         {
-            if (_textMeshCache == null) _textMeshCache = GetComponent<TextMesh>();
             return _textMeshCache;
         }
     }
