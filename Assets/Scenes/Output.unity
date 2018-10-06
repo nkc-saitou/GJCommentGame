@@ -468,6 +468,21 @@ Prefab:
       propertyPath: inputText
       value: 
       objectReference: {fileID: 112865105}
+    - target: {fileID: 224981124080474814, guid: d9c31b3aa964f0c45add78e6f80b02b6,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224981124080474814, guid: d9c31b3aa964f0c45add78e6f80b02b6,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224981124080474814, guid: d9c31b3aa964f0c45add78e6f80b02b6,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 372
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9c31b3aa964f0c45add78e6f80b02b6, type: 2}
   m_IsPrefabAsset: 0

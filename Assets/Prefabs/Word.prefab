@@ -57,7 +57,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4e6fec22b200ec64084cc141096c0189, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,7 +84,7 @@ TextMesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1885982306032108}
-  m_Text: "\u304B\u307E\u3060"
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1
@@ -94,7 +94,7 @@ TextMesh:
   m_FontSize: 100
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 0}
+  m_Font: {fileID: 12800000, guid: 4e6fec22b200ec64084cc141096c0189, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
@@ -109,5 +109,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c13d0bb5f979347b5a4949a5407c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMeshCache: {fileID: 102960349643080256}
-  testWord: 
