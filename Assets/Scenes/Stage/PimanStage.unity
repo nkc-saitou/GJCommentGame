@@ -367,6 +367,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1029099625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114883338269437762, guid: 0ddabcc42d6ce254cb482ffbddeeb13d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1477714579}
+  m_Script: {fileID: 11500000, guid: 0d35dc452937b2c499f9d82da1d49875, type: 3}
 --- !u!1001 &1477714579
 Prefab:
   m_ObjectHideFlags: 0
@@ -374,6 +380,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114704546329721630, guid: 0ddabcc42d6ce254cb482ffbddeeb13d,
+        type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224192228977573998, guid: 0ddabcc42d6ce254cb482ffbddeeb13d,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -463,6 +474,31 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114704546329721630, guid: 0ddabcc42d6ce254cb482ffbddeeb13d,
+        type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1029099625}
+    - target: {fileID: 114704546329721630, guid: 0ddabcc42d6ce254cb482ffbddeeb13d,
+        type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InputEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 114704546329721630, guid: 0ddabcc42d6ce254cb482ffbddeeb13d,
+        type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114704546329721630, guid: 0ddabcc42d6ce254cb482ffbddeeb13d,
+        type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114704546329721630, guid: 0ddabcc42d6ce254cb482ffbddeeb13d,
+        type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ddabcc42d6ce254cb482ffbddeeb13d, type: 2}

@@ -131,8 +131,6 @@ public class WordInput : MonoBehaviour
 
             Word = m_hiragana;
 
-            Debug.Log(Word);
-
             iWordReceive.WordReceive(Word, Color.red);
 
             InitInput();
