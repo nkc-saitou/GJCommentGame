@@ -22,9 +22,9 @@ public class SceneFade : MonoBehaviour,IWordReceive {
     {
         switch(word)
         {
-            case "ぴーまん": FadeManager.Instance.LoadScene("GameScene"); break;
-            case "なっとう": FadeManager.Instance.LoadScene("GameScene"); break;
-            case "ちょこみんと": FadeManager.Instance.LoadScene("GameScene"); break;
+            case "ぴ-まん": FadeManager.Instance.LoadScene("PimanStage"); break;
+            case "なっとう": FadeManager.Instance.LoadScene("NattoStage"); break;
+            case "ちょこみんと": FadeManager.Instance.LoadScene("ChocomintStage"); break;
         }
     }
 }

@@ -3,52 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
-using LitJson;
+using System.IO;
 
 public class WordInput : MonoBehaviour
 {
 
-    InputField inputField;
-
     public Text inputText;
 
-    string str;
+    TextAsset csvFile;
+
+    List<string[]> csvDatas = new List<string[]>();
+
+    InputField inputField;
+
+    char[] strArray = { 'a', 'i', 'u', 'e', 'o' };
 
     IWordReceive iWordReceive;
-
-    const string APPLICATION_ID = "d29e1994f8c499eebdda5997b21f8bfccc889167168c032c0d7282c6e77e2c11";
-
-    const string HIRAGANA_API = "https://labs.goo.ne.jp/api/hiragana";
-
-    string m_hiragana;
 
     /// <summary>
     /// 入力されたコメントを渡す
     /// </summary>
     public string Word { get; private set; }
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         inputField = FindObjectOfType<InputField>();
 
         iWordReceive = FindInterface.FindObjectOfInterfaces<IWordReceive>();
+
+        csvFile = Resources.Load("csv/ConverterData") as TextAsset;
+
+        StringReader reader = new StringReader(csvFile.text);
+
+        while (reader.Peek() > -1)
+        {
+            string line = reader.ReadLine();
+            csvDatas.Add(line.Split(','));
+        }
 
         InitInput();
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            inputField.ActivateInputField();
-            InputEnd();
-        }
+        inputField.ActivateInputField();
     }
 
     public void InputChange()
     {
-        str = inputField.text;
+        inputText.text = ConVerter();
     }
 
     /// <summary>
@@ -58,9 +62,10 @@ public class WordInput : MonoBehaviour
     {
         if (iWordReceive == null || inputField.text == "") return;
 
-        StartCoroutine(HiraganaPostRequest(inputField.text, 1));
+        inputField.ActivateInputField();
+        iWordReceive.WordReceive(ConVerter(), Color.red);
 
-        //Word = inputField.text;
+        InitInput();
     }
 
     /// <summary>
@@ -73,67 +78,76 @@ public class WordInput : MonoBehaviour
         inputField.ActivateInputField();
     }
 
-    public IEnumerator HiraganaPostRequest(string Sentence,int ConvertType)
+    /// <summary>
+    /// アルファベットからひらがなへ変換
+    /// </summary>
+    /// <returns></returns>
+    public string ConVerter()
     {
-        // JsonDataの作成.
-        JsonData data = new JsonData();
+        string tempStr = "";
+        string addStr = "";
 
-        // アプリケーションID.
-        data["app_id"] = APPLICATION_ID;
+        string[] tempArray = Split();
 
-        // 対象文字列.
-        data["sentence"] = Sentence;
-
-        // 変換タイプ（ひらがな、カタカナ）.
-        switch (ConvertType)
+        for (int i = 0; i < tempArray.Length; i++)
         {
-            case 1:
-                data["output_type"] = "hiragana";
+            if (tempArray[i].Length >= 3)
+            {
+                if (tempArray[i][0] == tempArray[i][1])
+                {
+                    addStr += "っ";
+                    tempArray[i] = tempArray[i].Remove(0, 1);
+                }
+                else if (tempArray[i][0] == 'w')
+                {
+                    addStr += tempArray[i].Substring(0, 1);
+                    tempArray[i] = tempArray[i].Remove(0, 1);
+                }
+            }
+
+            for (int j = 0; j < csvDatas.Count; j++)
+            {
+                if (tempArray[i] == csvDatas[j][0])
+                {
+                    tempStr = csvDatas[j][1];
+                    break;
+                }
+                else tempStr = tempArray[i];
+            }
+            addStr += tempStr;
+        }
+        return addStr;
+    }
+
+    /// <summary>
+    /// 分割
+    /// </summary>
+    /// <returns></returns>
+    public string[] Split()
+    {
+        var list = new List<string>();
+
+        string str = inputField.text;
+
+        int temp = 0;
+
+        while (temp != -1)
+        {
+            if (str.Length >= 2 && str.Substring(0, 2) == "nn") temp = 1;
+            else temp = str.IndexOfAny(strArray);
+
+            if (temp == -1)
+            {
+                if (str.Length != 0) list.Add(str);
                 break;
-            case 2:
-                data["output_type"] = "katakana";
-                break;
+            }
+
+            list.Add(str.Substring(0, temp + 1));
+
+            str = str.Remove(0, list[list.Count - 1].Length);
         }
 
-        string postJsonStr = data.ToJson();
-
-        Debug.Log("send post json: " + postJsonStr);
-
-        // bodyを作成.
-        byte[] postBytes = Encoding.Default.GetBytes(postJsonStr);
-
-        // ヘッダー.
-        Dictionary<string, string> headers = new Dictionary<string, string>();
-        headers["Content-Type"] = "application/json; charaset-UTF8";
-
-        Debug.Log("send post json: " + postJsonStr);
-
-        // リクエストを送信.
-        WWW result = new WWW(HIRAGANA_API, postBytes, headers);
-        yield return result;
-
-        if (result.error != null)
-        {
-            Debug.Log("Post Failure…");
-            Debug.Log(result.text);
-        }
-        else
-        {
-            Debug.Log("Post Success!");
-            Debug.Log("result: " + result.text);
-
-            JsonData jsonParser = JsonMapper.ToObject(result.text);
-
-            // パース.
-            m_hiragana = jsonParser["converted"].ToString();
-
-            Debug.Log(m_hiragana);
-
-            Word = m_hiragana;
-
-            iWordReceive.WordReceive(Word, Color.red);
-
-            InitInput();
-        }
+        return list.ToArray();
     }
 }
+
