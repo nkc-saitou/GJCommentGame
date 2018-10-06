@@ -35,7 +35,7 @@ public class WordOutput : MonoBehaviour, IWordReceive
     /// <returns></returns>
     float RandomHeight()
     {
-        const float HEIGHT_MIN     = -3.0f;
+        const float HEIGHT_MIN     = -2.0f;
         const float HEIGHT_MAX     =  4.5f;
         const float AVERAGE_BORDER =  3.0f;
         const float WORD_SIZE      =  1.0f;
