@@ -1,23 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+[RequireComponent(typeof(TextMesh))]
 public class WordMover : MonoBehaviour
 {
     const float MOVE_SPEED = 3.0f;
 
     Transform transformCache;
-    [SerializeField] TextMesh textMeshCache;
+    TextMesh textMeshCache;
 
-    [SerializeField] string testWord;
     bool isMove = false;
 
     //=====================================================
-    void Start()
-    {
-        transformCache = transform;
-    }
     void Update()
     {
         Move();
@@ -28,10 +23,14 @@ public class WordMover : MonoBehaviour
     /// 初期化処理
     /// </summary>
     /// <param name="word">表示する文字列</param>
-    public void Initialize(string word)
+    public void Initialize(string word, Color color)
     {
+        transformCache = transform;
+        textMeshCache = GetComponent<TextMesh>();
+
         if (textMeshCache == null) return;
         textMeshCache.text = word;
+        textMeshCache.color = color;
         isMove = true;
     }
 	
@@ -42,12 +41,5 @@ public class WordMover : MonoBehaviour
     {
         if (!isMove) return;
         transformCache.localPosition += Vector3.left * MOVE_SPEED * Time.deltaTime;
-    }
-	
-    [ContextMenu("TestMove")]
-    void TestMove()
-    {
-        if (testWord == "") return;
-        Initialize(testWord);
     }
 }

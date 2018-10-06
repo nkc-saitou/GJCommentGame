@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WordOutput : MonoBehaviour
+public class WordOutput : MonoBehaviour, IWordReceive
 {
     [SerializeField] WordMover wordPre;
     [SerializeField] string    outputWord;
@@ -11,10 +11,10 @@ public class WordOutput : MonoBehaviour
     /// 文字オブジェクトの出力
     /// </summary>
     /// <param name="word">表示する文字列</param>
-    public void WordShot(string word)
+    public void WordReceive(string word, Color color)
     {
         WordMover wordObj = Instantiate(wordPre, new Vector3(12, Random.Range(-4, 4), 0), Quaternion.identity);
-        wordObj.Initialize(word);
+        wordObj.Initialize(word, color);
     }
 
     float RandomHeight(float min, float max)
@@ -25,6 +25,6 @@ public class WordOutput : MonoBehaviour
     [ContextMenu("出力")]
     void TestOutput()
     {
-        WordShot(outputWord);
+        WordReceive(outputWord, Color.red);
     }
 }
