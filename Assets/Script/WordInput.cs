@@ -60,11 +60,7 @@ public class WordInput : MonoBehaviour
 
         StartCoroutine(HiraganaPostRequest(inputField.text, 1));
 
-        Word = inputField.text;
-
-        //iWordReceive.WordReceive(Word, Color.red);
-
-        //InitInput();
+        //Word = inputField.text;
     }
 
     /// <summary>
@@ -134,6 +130,8 @@ public class WordInput : MonoBehaviour
             Debug.Log(m_hiragana);
 
             Word = m_hiragana;
+
+            Debug.Log(Word);
 
             iWordReceive.WordReceive(Word, Color.red);
 
