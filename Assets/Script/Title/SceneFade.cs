@@ -22,7 +22,7 @@ public class SceneFade : MonoBehaviour,IWordReceive {
     {
         switch(word)
         {
-            case "ぴ-まん": FadeManager.Instance.LoadScene("PimanStage"); break;
+            case "ぴーまん": FadeManager.Instance.LoadScene("PimanStage"); break;
             case "なっとう": FadeManager.Instance.LoadScene("NattoStage"); break;
             case "ちょこみんと": FadeManager.Instance.LoadScene("ChocomintStage"); break;
         }

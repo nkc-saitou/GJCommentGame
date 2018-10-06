@@ -16,7 +16,7 @@ public class WordInput : MonoBehaviour
 
     InputField inputField;
 
-    char[] strArray = { 'a', 'i', 'u', 'e', 'o' };
+    char[] strArray = { 'a', 'i', 'u', 'e', 'o','-' };
 
     IWordReceive iWordReceive;
 
