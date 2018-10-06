@@ -8,6 +8,8 @@ public class WordInput : MonoBehaviour
 
     InputField inputField;
 
+    public Text inputText;
+
     IWordReceive iWordReceive;
 
     /// <summary>
@@ -20,9 +22,18 @@ public class WordInput : MonoBehaviour
     {
         inputField = FindObjectOfType<InputField>();
 
-        iWordReceive = FindObjectOfInterfaces<IWordReceive>();
+        iWordReceive = FindInterface.FindObjectOfInterfaces<IWordReceive>();
 
         InitInput();
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            inputField.ActivateInputField();
+            InputEnd();
+        }
     }
 
     /// <summary>
@@ -30,8 +41,9 @@ public class WordInput : MonoBehaviour
     /// </summary>
     public void InputEnd()
     {
-        if (iWordReceive == null) return;
-        Word = inputField.text;
+        if (iWordReceive == null || inputText.text == "") return;
+
+        Word = inputText.text;
 
         iWordReceive.WordReceive(Word, Color.red);
 
@@ -46,22 +58,5 @@ public class WordInput : MonoBehaviour
         inputField.text = "";
 
         inputField.ActivateInputField();
-    }
-
-    public T FindObjectOfInterfaces<T>() where T : class
-    {
-        List<T> list = new List<T>();
-
-        foreach(var n in FindObjectsOfType<Component>())
-        {
-            var component = n as T;
-
-            if(component != null)
-            {
-                return component;
-            }
-        }
-
-        return null;
     }
 }
