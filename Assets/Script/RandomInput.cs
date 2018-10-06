@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomInput : MonoBehaviour
 {
-    const float SEND_INTERVAL = 2.0f;
+    const float SEND_INTERVAL = 1.0f;
 
     IWordReceive wordOutput;
     [SerializeField] WordList wordData;

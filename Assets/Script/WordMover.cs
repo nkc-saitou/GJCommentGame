@@ -34,10 +34,8 @@ public class WordMover : MonoBehaviour
             return _textMeshCache;
         }
     }
-    /// <summary>
-    /// 文字の終りのX座標
-    /// </summary>
     float WordEndX { get { return TransformCache.localPosition.x + wordLength * WORD_SIZE; } }
+    public float PositionHeight {  get { return TransformCache.localPosition.y; } }
 
     //=====================================================
     void Update()
