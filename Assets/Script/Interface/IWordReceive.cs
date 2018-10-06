@@ -8,4 +8,6 @@ public interface IWordReceive
     /// <param name="word">文字列</param>
     /// <param name="color">文字列の色</param>
     void WordReceive(string word, Color color);
+
+    //void WordReceive(string word, WordType type);
 }

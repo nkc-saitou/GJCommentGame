@@ -5,6 +5,7 @@ using UnityEngine;
 public class WordOutput : MonoBehaviour, IWordReceive
 {
     [SerializeField] WordManager wordManager;
+    [SerializeField] WordCounter wordCounter;
     [SerializeField] WordMover   wordPre;
 
     float beforeHeight = 0;
@@ -18,7 +19,19 @@ public class WordOutput : MonoBehaviour, IWordReceive
         WordMover wordObj = Instantiate(wordPre, WordOutputPosition(), Quaternion.identity);
         wordObj.Initialize(word, color);
         wordManager.AddComment(wordObj);
+        
+        if(Color.red == color)
+        {
+            wordCounter.CheckWord(word);
+        }
     }
+
+    //public void WordReceive(string word, WordType type)
+    //{
+    //    WordMover wordObj = Instantiate(wordPre, WordOutputPosition(), Quaternion.identity);
+    //    wordObj.Initialize(word, WordImage.TypeToColor(type));
+    //    wordManager.AddComment(wordObj);
+    //}
 
     /// <summary>
     /// 文字を出す位置
