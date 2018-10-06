@@ -34,3 +34,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Sprite.meta
+Assets/Resources/SE.meta
+Assets/Resources/BGM.meta
+Assets/Resources.meta
