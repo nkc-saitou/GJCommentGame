@@ -7,7 +7,9 @@ public class RandomInput : MonoBehaviour
     const float SEND_INTERVAL = 1.0f;
 
     IWordReceive wordOutput;
-    [SerializeField] WordList wordData;
+    [SerializeField] WordList shareWordData;
+    [SerializeField] WordList AngerWordData;
+    [SerializeField] WordList specialWordData;
 
     float intervalTimer = 0;
 
@@ -41,6 +43,6 @@ public class RandomInput : MonoBehaviour
     /// <returns></returns>
     string RandomWord()
     {
-        return wordData.words[Random.Range(0, wordData.words.Length)];
+        return shareWordData.words[Random.Range(0, shareWordData.words.Length)];
     }
 }

@@ -20,6 +20,13 @@ public class WordOutput : MonoBehaviour, IWordReceive
         wordManager.AddComment(wordObj);
     }
 
+    //public void WordReceive(string word, WordType type)
+    //{
+    //    WordMover wordObj = Instantiate(wordPre, WordOutputPosition(), Quaternion.identity);
+    //    wordObj.Initialize(word, WordImage.TypeToColor(type));
+    //    wordManager.AddComment(wordObj);
+    //}
+
     /// <summary>
     /// 文字を出す位置
     /// </summary>
