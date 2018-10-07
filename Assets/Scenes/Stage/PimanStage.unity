@@ -426,7 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTimer: {fileID: 1387410160}
   _rimitTime: 60
-  _clearNum: 10
+  _clearNum: 30
   _correctWord: "\u306B\u304C\u3044"
 --- !u!4 &1387410162
 Transform:
