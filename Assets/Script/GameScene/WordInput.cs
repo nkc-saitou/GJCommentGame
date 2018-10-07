@@ -66,6 +66,8 @@ public class WordInput : MonoBehaviour
 
         Word = WordConverter.Instance.ConVerter(inputField.text);
 
+        Debug.Log(Word);
+
         iWordReceive.WordReceive(Word, WordType.Troll);
 
         InitInput();
@@ -77,6 +79,8 @@ public class WordInput : MonoBehaviour
     void InitInput()
     {
         inputField.text = "";
+
+        Word = "";
 
         inputField.ActivateInputField();
     }

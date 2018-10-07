@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SceneFade : MonoBehaviour,IWordReceive {
 
+    bool isFirst = true;
+
 	// Use this for initialization
 	void Start () {
         AudioManager.Instance.PlayBGM("bgm_StartScene");
@@ -20,6 +22,10 @@ public class SceneFade : MonoBehaviour,IWordReceive {
     /// <param name="word">表示する文字列</param>
     public void WordReceive(string word, WordType type)
     {
+        if (isFirst != true) return;
+
+        isFirst = false;
+
         switch(word)
         {
             case "ぴーまん":
