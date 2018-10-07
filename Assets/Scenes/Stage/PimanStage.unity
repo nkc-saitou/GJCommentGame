@@ -301,6 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 995620115}
   - component: {fileID: 995620114}
+  - component: {fileID: 995620116}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -367,6 +368,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &995620116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 995620113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd0ac6366e29864595a4fafe33045d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameTimer: {fileID: 1387410160}
+  backgroundList:
+  - {fileID: 21300000, guid: 442cfd2ae734af54d9b5c6c1d17f8f31, type: 3}
+  - {fileID: 21300000, guid: 2798b2531170a1445951ed6ca9199063, type: 3}
+  - {fileID: 21300000, guid: 9692901e8569e5a45afeee5094fad55b, type: 3}
+  changeInterval: 20
 --- !u!1 &1387410159
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,8 +425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTimer: {fileID: 1387410160}
-  _rimitTime: 180
-  _clearNum: 10
+  _rimitTime: 60
+  _clearNum: 30
   _correctWord: "\u306B\u304C\u3044"
 --- !u!4 &1387410162
 Transform:
