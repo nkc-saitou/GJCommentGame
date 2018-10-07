@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameStart()
     {
+        AudioManager.Instance.PlayBGM("bgm_GameScene");
         gameTimer.Initialize();
         State = GameState.Play;
     }
