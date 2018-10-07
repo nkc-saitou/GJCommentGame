@@ -35,6 +35,9 @@ public class SceneFade : MonoBehaviour,IWordReceive {
                 FadeManager.Instance.LoadScene("OperationScene");
                 GameType.Instance.Stage = GameStage._other;
                 break;
+            default:
+                GameType.Instance.Stage = GameStage._other;
+                break;
         }
 
         if(GameType.Instance.Stage != GameStage._other) FadeManager.Instance.LoadScene("PerformanceLoadScene");
