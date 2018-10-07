@@ -6,7 +6,7 @@ public class SceneFade : MonoBehaviour,IWordReceive {
 
 	// Use this for initialization
 	void Start () {
-		
+        AudioManager.Instance.PlayBGM("bgm_StartScene");
 	}
 	
 	// Update is called once per frame
@@ -25,6 +25,7 @@ public class SceneFade : MonoBehaviour,IWordReceive {
             case "ぴーまん": FadeManager.Instance.LoadScene("PimanStage"); break;
             case "なっとう": FadeManager.Instance.LoadScene("NattoStage"); break;
             case "ちょこみんと": FadeManager.Instance.LoadScene("ChocomintStage"); break;
+            case "そうさほうほう": FadeManager.Instance.LoadScene("OperationScene"); break;
         }
     }
 }

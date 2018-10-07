@@ -47,7 +47,7 @@ public class WordInput : MonoBehaviour
 
     void Update()
     {
-        inputField.ActivateInputField();
+        if (Input.anyKeyDown) inputField.ActivateInputField();
     }
 
     public void InputChange()
