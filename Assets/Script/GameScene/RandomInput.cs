@@ -15,10 +15,9 @@ public class RandomInput : MonoBehaviour
     [SerializeField] WordList AngerWordData;
     [SerializeField] WordList specialWordData;
 
-    float intervalTimer = 0;
-
-    int[] beforeGoodWards  = new int[3];
-    int[] beforeAngerWords = new int[3];
+    float intervalTimer   =  0;
+    int   beforeGoodWard  = -1;
+    int   beforeAngerWord = -1;
     //-----------------------------------------------------
     //  プロパティ
     //-----------------------------------------------------
@@ -28,11 +27,6 @@ public class RandomInput : MonoBehaviour
     {
         wordOutput  = GetComponent<WordOutput>();
         wordCounter = GetComponent<WordCounter>();
-
-        beforeGoodWards = beforeGoodWards.Select(value => -1).ToArray();
-        beforeAngerWords = beforeAngerWords.Select(value => -1).ToArray();
-
-        wordOutput.WordReceive("うぽつ～～", WordType.Normal);
     }
     void Update()
     {
@@ -75,7 +69,8 @@ public class RandomInput : MonoBehaviour
     {
         string[] goodWords = shareWordData.words.
             Concat(specialWordData.words).ToArray();
-        int wordNo = ArrayNotMatchNo(beforeGoodWards, goodWords.Length);
+        int wordNo = NotMatchNo(beforeGoodWard, goodWords.Length);
+        beforeGoodWard = wordNo;
 
         return goodWords[wordNo];
     }
@@ -85,28 +80,22 @@ public class RandomInput : MonoBehaviour
     /// <returns></returns>
     string RandomAngerWord()
     {
-        int wordNo = ArrayNotMatchNo(beforeAngerWords, AngerWordData.words.Length);
+        int wordNo = NotMatchNo(beforeAngerWord, AngerWordData.words.Length);
+        beforeAngerWord = wordNo;
 
         return AngerWordData.words[wordNo];
     }
     /// <summary>
     /// 配列内の値と一致しない値を返す
     /// </summary>
-    int ArrayNotMatchNo(int[] array, int range)
+    int NotMatchNo(int num, int range)
     {
         int no = 0;
         do
         {
             no = Random.Range(0, range);
-        } while (array.Any(value => value == no));
+        } while (num == no);
 
         return no;
     }
-
-    //int[] ArrayPush(int[] array, int no)
-    //{
-    //    return array.
-    //        Concat(new int[] { no }).
-
-    //}
 }

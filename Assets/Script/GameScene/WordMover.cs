@@ -34,8 +34,15 @@ public class WordMover : MonoBehaviour
             return _textMeshCache;
         }
     }
-    float WordEndX { get { return TransformCache.localPosition.x + wordLength * WORD_SIZE; } }
+    public float WordEndX { get { return TransformCache.localPosition.x + wordLength * WORD_SIZE; } }
     public float PositionHeight {  get { return TransformCache.localPosition.y; } }
+    public Rect GetRect {
+        get {
+            return new Rect(
+                new Vector2(TransformCache.localPosition.x, TransformCache.localPosition.y - (WORD_SIZE * 0.5f)),
+                new Vector2(wordLength * WORD_SIZE, WORD_SIZE));
+        }
+    }
 
     //=====================================================
     void Update()
@@ -81,5 +88,17 @@ public class WordMover : MonoBehaviour
         if (wordLength == 0) return true;
         if (WordEndX < DISPLAY_END_BORDER) return true;
         return false;
+    }
+    /// <summary>
+    /// 当たり判定
+    /// </summary>
+    /// <returns>当たっている</returns>
+    public bool IsCollision(Rect rect)
+    {
+        return
+            GetRect.position.x                  < rect.position.x + rect.size.x &&
+            GetRect.position.x + GetRect.size.x > rect.position.x               &&
+            GetRect.position.y                  < rect.position.y + rect.size.y &&
+            GetRect.position.y + GetRect.size.y > rect.size.y;
     }
 }
