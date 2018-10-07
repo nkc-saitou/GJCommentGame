@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GameState
+{
+    Start,
+    Play,
+    Finish
+}
+
 public class GameManager : MonoBehaviour
 {
     #region シングルトン
@@ -31,11 +38,12 @@ public class GameManager : MonoBehaviour
     [SerializeField, Tooltip("クリアまでのコメント数")] int    _clearNum;
     [SerializeField, Tooltip("正解ワード")]             string _correctWord;
 
-
     //=====================================================
     public float  RimitTime { get { return _rimitTime; } }
     public int    ClearNum { get { return _clearNum; } }
     public string CorrectWord { get { return _correctWord; } }
+    public GameState State { get; private set; }
+    public bool IsPlay { get { return State == GameState.Play; } }
     //=====================================================
     void Start()
     {
@@ -48,20 +56,24 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         gameTimer.Initialize();
-        gameTimer.CountStart();
+        State = GameState.Play;
     }
     /// <summary>
     /// ゲームクリア
     /// </summary>
     public void GameClear()
     {
+        if (GameState.Finish == State) return;
         Debug.Log("GameClear");
+        State = GameState.Finish;
     }
     /// <summary>
     /// ゲーム終了
     /// </summary>
     public void GameOver()
     {
+        if (GameState.Finish == State) return;
         Debug.Log("GameOver");
+        State = GameState.Finish;
     }
 }

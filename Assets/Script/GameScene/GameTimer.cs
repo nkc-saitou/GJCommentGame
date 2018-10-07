@@ -6,16 +6,22 @@ public class GameTimer : MonoBehaviour
 {
     float timer     = 0;
     float rimitTime = 0;
-    bool  isCount   = false;
 
     //-----------------------------------------------------
     //  プロパティ
     //-----------------------------------------------------
+    public float CountTime { get { return timer; } }
+    public float TimeRate {
+        get {
+            if (rimitTime == 0) return 0;
+            return Mathf.Min(timer / rimitTime, 1);
+        }
+    }
     bool IsFinish { get { return timer > rimitTime; } }
     //=====================================================
     void Update()
     {
-        if (!isCount) return;
+        if (!GameManager.instance.IsPlay) return;
 
         TimeCount();
         CheckTime();
@@ -28,24 +34,6 @@ public class GameTimer : MonoBehaviour
     {
         timer = 0;
         rimitTime = GameManager.instance.RimitTime;
-        isCount = false;
-    }
-
-    /// <summary>
-    /// カウント開始
-    /// </summary>
-    public void CountStart()
-    {
-        isCount = true;
-    }
-    /// <summary>
-    /// 進行パーセント
-    /// </summary>
-    /// <returns></returns>
-    public float TimePersent()
-    {
-        if (!isCount) return 0;
-        return Mathf.Min(timer / rimitTime, 1);
     }
     /// <summary>
     /// カウント

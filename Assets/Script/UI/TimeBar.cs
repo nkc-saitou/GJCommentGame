@@ -19,7 +19,7 @@ public class TimeBar : MonoBehaviour
     void MoveBar()
     {
         Vector3 pos = barNob.localPosition;
-        pos.x = BAR_LENGTH * gameTimer.TimePersent();
+        pos.x = BAR_LENGTH * gameTimer.TimeRate;
         barNob.localPosition = pos;
     }
 }
