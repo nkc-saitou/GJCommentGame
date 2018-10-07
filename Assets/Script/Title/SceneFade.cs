@@ -22,10 +22,21 @@ public class SceneFade : MonoBehaviour,IWordReceive {
     {
         switch(word)
         {
-            case "ぴーまん": FadeManager.Instance.LoadScene("PimanStage"); break;
-            case "なっとう": FadeManager.Instance.LoadScene("NattoStage"); break;
-            case "ちょこみんと": FadeManager.Instance.LoadScene("ChocomintStage"); break;
-            case "そうさほうほう": FadeManager.Instance.LoadScene("OperationScene"); break;
+            case "ぴーまん":
+                GameType.Instance.Stage = GameStage._piman;
+                break;
+            case "なっとう":
+                GameType.Instance.Stage = GameStage._natto;
+                break;
+            case "ちょこみんと":
+                GameType.Instance.Stage = GameStage._choco;
+                break;
+            case "そうさほうほう":
+                FadeManager.Instance.LoadScene("OperationScene");
+                GameType.Instance.Stage = GameStage._other;
+                break;
         }
+
+        if(GameType.Instance.Stage != GameStage._other) FadeManager.Instance.LoadScene("PerformanceLoadScene");
     }
 }
