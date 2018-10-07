@@ -37,7 +37,7 @@ public class PerformanceLoad : MonoBehaviour {
 
             case GameStage._choco:
                 keyword = "はみがきこやん";
-                keywordCount = "30";
+                keywordCount = "25";
                 break;
         }
 

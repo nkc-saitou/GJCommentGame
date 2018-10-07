@@ -1370,7 +1370,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: "\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3092\n 60\u79D2\u4EE5\u5185\u306B30\u500B\u6253\u3066\uFF01"
+  m_Text: "\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3092\n 60\u79D2\u4EE5\u5185\u306B25\u500B\u6253\u3066\uFF01"
 --- !u!222 &1423790776
 CanvasRenderer:
   m_ObjectHideFlags: 0

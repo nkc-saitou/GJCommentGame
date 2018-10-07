@@ -6,8 +6,8 @@ using System.Linq;
 public class WordManager : MonoBehaviour
 {
     const float WORD_START_X = 11.0f;
-    const float HEIGHT_MIN = -2.0f;
-    const float HEIGHT_MAX = 4.5f;
+    const float HEIGHT_MIN = -2.1f;
+    const float HEIGHT_MAX = 3.7f;
     const float WORD_SIZE = 1.0f;
 
     public class Range
