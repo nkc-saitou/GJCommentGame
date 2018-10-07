@@ -23,7 +23,6 @@ public class SceneFade : MonoBehaviour,IWordReceive {
     public void WordReceive(string word, WordType type)
     {
         if (isFirst != true) return;
-
         isFirst = false;
 
         switch(word)
