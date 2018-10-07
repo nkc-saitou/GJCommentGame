@@ -11,4 +11,15 @@ public static class WordImage
         }
         return Color.black;
     }
+
+    public static int TypeToDepth(WordType type)
+    {
+        switch (type)
+        {
+            case WordType.Troll: return 0;
+            case WordType.Normal: return 5;
+        }
+
+        return 5;
+    }
 }

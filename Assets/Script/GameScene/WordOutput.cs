@@ -16,7 +16,7 @@ public class WordOutput : MonoBehaviour, IWordReceive
     /// <param name="word">表示する文字列</param>
     public void WordReceive(string word, WordType type)
     {
-        WordMover wordObj = Instantiate(wordPre, WordOutputPosition(), Quaternion.identity);
+        WordMover wordObj = Instantiate(wordPre, wordManager.AdjustmentPosition(type), Quaternion.identity);
         wordObj.Initialize(word, WordImage.TypeToColor(type));
         wordManager.AddComment(wordObj);
 
@@ -24,42 +24,5 @@ public class WordOutput : MonoBehaviour, IWordReceive
         {
             wordCounter.CheckWord(word);
         }
-    }
-
-    /// <summary>
-    /// 文字を出す位置
-    /// </summary>
-    /// <returns></returns>
-    Vector3 WordOutputPosition()
-    {
-        const float WORD_START_X = 11.0f;
-        return new Vector3(WORD_START_X, RandomHeight(), 0);
-    }
-    /// <summary>
-    /// ランダムな高さを返す
-    /// </summary>
-    /// <returns></returns>
-    float RandomHeight()
-    {
-        const float HEIGHT_MIN     = -2.0f;
-        const float HEIGHT_MAX     =  4.5f;
-        const float AVERAGE_BORDER =  3.0f;
-        const float WORD_SIZE      =  1.0f;
-
-        float height = 0;
-
-        do
-        {
-            height = Random.Range(HEIGHT_MIN, HEIGHT_MAX);
-            if (Mathf.Abs(wordManager.AverageHeight()) > AVERAGE_BORDER)
-            {
-                height = Mathf.Clamp(height - wordManager.AverageHeight(), HEIGHT_MIN, HEIGHT_MIN);
-            }
-
-            if (beforeHeight == 0) break;
-        } while (Mathf.Abs(beforeHeight - height) < WORD_SIZE);
-
-        beforeHeight = height;
-        return height;
     }
 }
