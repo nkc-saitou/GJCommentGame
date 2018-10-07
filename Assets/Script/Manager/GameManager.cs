@@ -64,7 +64,8 @@ public class GameManager : MonoBehaviour
     public void GameClear()
     {
         if (GameState.Finish == State) return;
-        Debug.Log("GameClear");
+
+        FadeManager.Instance.LoadScene("GameClear");
         State = GameState.Finish;
     }
     /// <summary>
@@ -73,7 +74,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         if (GameState.Finish == State) return;
-        Debug.Log("GameOver");
+
+        FadeManager.Instance.LoadScene("GameOver");
         State = GameState.Finish;
     }
 }
