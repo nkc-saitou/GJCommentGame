@@ -60,6 +60,11 @@ public class WordConverter : SingletonMonoBehaviour<WordConverter>
                     addStr += tempArray[i].Substring(0, 1);
                     tempArray[i] = tempArray[i].Remove(0, 1);
                 }
+                else if(tempArray[i][0] == 'n')
+                {
+                    addStr += "ん";
+                    tempArray[i] = tempArray[i].Remove(0, 1);
+                }
             }
 
             for (int j = 0; j < csvDatas.Count; j++)
